@@ -202,6 +202,3 @@ This project was developed collaboratively as part of a learning initiative in c
 
 This project is for educational purposes.
 =======
-# HoneyPie
-Computer vision-based emotion recognition system using OpenCV &amp; DeepFace with mood analytics and visualization.
->>>>>>> ddec813b6cfdd9d574876e2ed3b445517373d7d7
