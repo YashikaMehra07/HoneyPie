@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register - HoneyPie</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="form-container">
+    <form id="register-form" method="POST" action="/register" onsubmit="return validateForm()">
+      <h2>Register to HoneyPie</h2>
+      <input type="text" name="username" id="username" placeholder="Full Name" required>
+      <input type="email" name="email" id="email" placeholder="Email" required>
+      <input type="password" name="password" id="password" placeholder="Password" required>
+      <input type="password" name="confirm_password" id="confirm-password" placeholder="Confirm Password" required>
+      <button type="submit" class="btn">Register</button>
+
+      {% if error %}
+        <p style="color: red;">{{ error }}</p>
+      {% elif success %}
+        <p style="color: green;">{{ success }}</p>
+      {% endif %}
+    </form>
+    <p>Already have an account? <a href="{{ url_for('index') }}#login-form">Login here</a></p>
+  </div>
+
+  <!-- 🔽 JavaScript for simple client-side validation -->
+  <script>
+    function validateForm() {
+      const password = document.getElementById('password').value;
+      const confirm = document.getElementById('confirm-password').value;
+
+      if (password !== confirm) {
+        alert('Passwords do not match!');
+        return false; // Prevent form submission
+      }
+      return true; // Proceed with submission
+    }
+  </script>
+</body>
+</html>

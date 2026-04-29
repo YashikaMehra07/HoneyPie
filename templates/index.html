@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HoneyPie</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='logo_4_image.png') }}" alt="Logo" class="logo">
+            <span class="brand-name">HoneyPie</span>
+        </div>
+        <nav>
+            
+            <ul class="nav-menu">
+                <button class="menu-toggle">☰</button>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#login">Login/Signup</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="home">
+        <h2>Welcome to HONEYPIE 
+            <i class="fa-brands fa-bluesky"></i>
+        </h2>
+        <div class="welcome-content">
+            <h1>Your Emotions Matter – Let’s Understand Them Together!</h1>
+            
+            <button class="btn primary"><a href="#login">Missed your HoneyPie!!</a></button>
+            <button class="btn secondary"><a href="#about">Learn More</a></button>
+        </div>
+    </section>
+    <section id="about">
+        <!-- <h1>About HoneyPie</h1> -->
+        <h2>Understanding You, One Emotion at a Time</h2>
+        <p>Our AI-powered chatbot analyzes emotions through text, voice(upcoming feature), or facial expressions to understand your mood and provide you with your mood analysis. Know whether you're feeling happy, stressed, or anything in between, because we feel you!!</p>
+        <h4>How Does It Work?</h4>
+        <div class="steps-container">
+            <div class="step">
+                <h5>Step 1</h5>
+                <p>You interact with HoneyPie via text, voice, or video.</p>
+            </div>
+            <div class="step">
+                <h5>Step 2</h5>
+                <p>AI-powered emotion recognition detects your mood.</p>
+            </div>
+            <div class="step">
+                <h5>Step 3</h5>
+                <p>Get your emotional-statistics.</p>
+            </div>
+        </div>
+        <div class="about-section">
+        <h4>Why Choose HoneyPie?</h4>
+        <ul class="features-list">
+            <li>🎭<b>Real-Time Emotion Detection </b>– Recognizes emotions from text, voice, or facial expressions.</li>
+            <li>🤖 <strong>AI-Powered Conversations</strong> – Understands and adapts to your mood.</li>
+            <li>🛠 <strong>Emotional Wellbeing</strong> – Provides daily and monthly mood analysis.</li>
+            <li>🔒 <strong>Privacy Focused</strong> – Secure and confidential interactions.</li>
+        </ul>
+    </div>
+    <div class="about-section">
+        <h4>Designed for Everyone: </h4>
+        <ul class="audience-list">
+            <li>🏢 <strong>Businesses:</strong> Improve customer engagement through emotion-aware AI.</li>
+            <li>🏠 <strong>Individuals:</strong> Get emotional support and mindfulness recommendations.</li>
+            <li>🏫 <strong>Students:</strong> Manage stress and stay motivated.</li>
+            <li>❤️ <strong>Mental Health Enthusiasts:</strong> Complement emotional well-being practices.</li>
+        </ul>
+    </div>
+    </section>
+            <!-- Login Form -->
+    <div  id="login" class="login-container">
+        <h2>Login to HoneyPie</h2>
+        <form onsubmit="loginUser(event)">
+            <input type="email" id="login-email" class="input-field" placeholder="Email" required>
+        <input type="password" id="login-password" class="input-field" placeholder="Password" required>
+        <button type="submit">Login</button>
+          </form>
+          
+        <p>Or</p>
+        <p>New user? <a href="{{ url_for('register') }}">Register here</a></p>
+
+    </div>
+    
+      <!-- Link external JavaScript file -->
+      <script src="{{ url_for('static', filename='script.js') }}"></script>
+      
+</body>
+</html>

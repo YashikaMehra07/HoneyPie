@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - HoneyPie</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body onload="checkLogin()">
+  <div class="dashboard-container">
+    <!-- Sidebar Toggle Button -->
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="profile-section">
+        <h3 id="username">User</h3>
+      </div>
+      <div class="history-section">
+        <h4>History</h4>
+        <nav>
+          <a href="{{ url_for('weekly_emotions', username=username) }}">Emotion Updates</a>
+          <a href="{{ url_for('yearly_emotions', username=username) }}">Mood History</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+      <!-- Top-right buttons -->
+      <div class="top-right-options">
+        <button onclick="alert('Settings coming soon')">⚙️ Settings</button>
+        <button onclick="logout()">🚪 Logout</button>
+      </div>
+
+      <div class="welcome-section">
+        <h1>Welcome to HoneyPie!</h1>
+        <p>We feel ya!!</p>
+      </div>
+
+      <div class="boxes-section">
+
+        <!-- Camera Mood Detection -->
+        <div class="camera-section">
+          <!-- Camera Button -->
+          <button id="openCameraBtn" class="camera-btn">
+            <div id="cameraPrompt" class="mood-detect">
+              <i class="fa-solid fa-camera camera-icon text-4xl"></i>
+              <span class="text-lg mt-2 block">Click on camera to detect your mood</span>
+            </div>
+          </button>
+
+          <!-- Video Stream -->
+          <div id="videoContainer" class="video-container hidden mt-4">
+            <img id="cameraStream" class="rounded-xl border shadow-md" alt="Camera Feed" />
+          </div>
+        </div>
+
+        <!-- Chatbot Block -->
+        <div class="chatbot-section">
+          <h3>Chat with HoneyPie 🤖</h3>
+          <div class="chat-window" id="chatWindow">
+            <!-- Messages will appear here -->
+          </div>
+          <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Type your message..." />
+            <button onclick="sendMessage()" title="Send">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+          
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function checkLogin() {
+      const storedUser = JSON.parse(localStorage.getItem('honeypieUser'));
+      if (!storedUser) {
+        alert("You must log in first!");
+        window.location.href = "/#login-form";
+        return;
+      }
+      document.getElementById('username').innerText = storedUser.name;
+    }
+
+    function logout() {
+      localStorage.removeItem('honeypieUser');
+      window.location.href = "/logout";
+    }
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('collapsed');
+    }
+
+    // Camera Toggle Logic
+    let isCameraOn = false;
+
+    document.getElementById('openCameraBtn').addEventListener('click', function () {
+      const videoContainer = document.getElementById('videoContainer');
+      const cameraStream = document.getElementById('cameraStream');
+      const cameraPrompt = document.getElementById('cameraPrompt');
+
+      if (!isCameraOn) {
+        cameraPrompt.style.display = 'none';
+        videoContainer.classList.remove('hidden');
+        cameraStream.src = "/video_feed";
+      } else {
+        cameraPrompt.style.display = 'flex';
+        videoContainer.classList.add('hidden');
+        cameraStream.src = "";
+      }
+
+      isCameraOn = !isCameraOn;
+    });
+
+    // Simple Chatbot
+    function sendMessage() {
+      const input = document.getElementById('userInput');
+      const chatWindow = document.getElementById('chatWindow');
+      const message = input.value.trim().toLowerCase();
+
+      if (message !== "") {
+        const userMsg = document.createElement('p');
+        userMsg.textContent = "You: " + message;
+        chatWindow.appendChild(userMsg);
+
+        const botMsg = document.createElement('p');
+        if (message.includes("hi") || message.includes("hello")) {
+          botMsg.textContent = "HoneyPie: Hey there! 😊";
+        } else if (message.includes("how are you")) {
+          botMsg.textContent = "HoneyPie: I'm just code, but I'm doing great! How about you?";
+        } else if (message.includes("bye")) {
+          botMsg.textContent = "HoneyPie: Goodbye! Take care! 👋";
+        } else {
+          botMsg.textContent = "HoneyPie: I'm still learning! 🤖";
+        }
+
+        chatWindow.appendChild(botMsg);
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+        input.value = "";
+      }
+    }
+  </script>
+</body>
+</html>

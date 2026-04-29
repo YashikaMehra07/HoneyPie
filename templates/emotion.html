@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weekly Emotions</title>
+    <style>
+        .date-nav {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>{{ username }}'s Weekly Emotion Chart</h2>
+
+    
+    <form method="POST" class="date-nav">
+        <input type="date" name="selected_date" value="{{ selected_date }}">
+        <button type="submit" name="prev">Previous Week</button>
+        <button type="submit" name="next">Next Week</button>
+    </form>
+
+    <div>
+        {{ chart_html|safe }}
+    </div>
+    <a href="{{ url_for('mood_recognition') }}">← Back to Dashboard</a>
+
+</body>
+</html>
