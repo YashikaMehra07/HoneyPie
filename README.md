@@ -10,10 +10,35 @@ The project integrates computer vision and deep learning to analyze facial expre
 
 * 🎥 Real-time mood detection using webcam
 * 😊 Emotion analysis using DeepFace (pre-trained model)
-* 📊 Mood data storage for each user
+* 📊 Continuous mood tracking per user session
 * 📈 Visualization of emotional trends (weekly/yearly)
 * 🖥️ Interactive dashboard with camera toggle
 * 🗃️ SQLite database integration
+
+---
+
+## 🚀 Features
+
+* 🎥 Real-time mood detection using webcam
+* 😊 Emotion analysis using DeepFace (dominant + secondary emotions)
+* 📊 Continuous mood tracking per user session
+
+### 📈 Mood Analytics Dashboard
+
+* 📅 Daily mood summary (mode of detected emotion per day)
+* 📉 Emotion distribution charts (e.g., % Happy, Sad, Fear, etc.)
+* 🧠 Historical mood trends over time
+* 📊 Detailed per-day emotional breakdown
+
+### 🔐 User Features
+
+* 👤 Login & Signup system
+
+* 🤖 Chatbot integration
+
+* 🎛️ Interactive dashboard with camera toggle
+
+* 🗃️ SQLite database for persistent storage
 
 ---
 
@@ -156,8 +181,17 @@ Developed as part of a learning project exploring computer vision and emotion re
 
 ## 👥 Contributors
 
-* **Yashika Mehra** – Backend development, emotion detection, Flask integration
-* **Priya Panchal** – Frontend design, UI/UX, dashboard implementation
+* **Yashika Mehra** 
+– Implemented emotion detection pipeline using OpenCV and DeepFace
+– Developed Flask backend and integrated SQLite database
+– Experimented with custom emotion classification model using PyTorch (FER2013 dataset)
+– Built and connected dashboard logic for real-time mood tracking
+
+* **Priya Panchal** 
+– Designed and developed frontend UI
+– Implemented user authentication (login/signup)
+– Integrated frontend with backend functionalities
+– Handled final system integration and user interaction flow
 
 This project was developed collaboratively as part of a learning initiative in computer vision and web development.
 
