@@ -198,7 +198,4 @@ This project was developed collaboratively as part of a learning initiative in c
 
 ---
 
-## 📜 License
 
-This project is for educational purposes.
-=======
