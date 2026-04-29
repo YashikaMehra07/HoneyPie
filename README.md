@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # 🍯 HoneyPie – Mood Detection Web App
 
 HoneyPie is a Flask-based web application that detects a user’s mood in real time using a webcam and stores emotional trends for visualization.
