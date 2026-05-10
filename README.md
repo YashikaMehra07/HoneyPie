@@ -10,17 +10,6 @@ The project integrates computer vision and deep learning to analyze facial expre
 ## 🚀 Features
 
 * 🎥 Real-time mood detection using webcam
-* 😊 Emotion analysis using DeepFace (pre-trained model)
-* 📊 Continuous mood tracking per user session
-* 📈 Visualization of emotional trends (weekly/yearly)
-* 🖥️ Interactive dashboard with camera toggle
-* 🗃️ SQLite database integration
-
----
-
-## 🚀 Features
-
-* 🎥 Real-time mood detection using webcam
 * 😊 Emotion analysis using DeepFace (dominant + secondary emotions)
 * 📊 Continuous mood tracking per user session
 
